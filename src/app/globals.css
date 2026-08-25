@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FCFCF9;
+  --foreground: #141414;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom subtle ambient backdrop lighting */
+.ambient-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(254, 243, 199, 0.45) 0%, rgba(255, 251, 235, 0.25) 40%, rgba(252, 252, 249, 0) 75%),
+              radial-gradient(circle at 100% 30%, rgba(254, 240, 138, 0.2) 0%, rgba(252, 252, 249, 0) 50%),
+              radial-gradient(circle at 0% 30%, rgba(254, 240, 138, 0.2) 0%, rgba(252, 252, 249, 0) 50%);
+}
+
+/* Smooth text balance and rendering */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Glassmorphism utility */
+.glass-nav {
+  background: rgba(252, 252, 249, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
