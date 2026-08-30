@@ -5,8 +5,10 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
   Monitor,
+  Smartphone,
   Download,
   CheckCircle2,
+  Globe,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -100,14 +102,8 @@ export default function ProductPage() {
               <div>
                 {/* Platform Header */}
                 <div className="flex items-center justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl overflow-hidden border border-[#E8E6DF] bg-[#FAFAF8] shadow-md">
-                    <Image
-                      src="/logo.png"
-                      alt="ZEON Android App Icon"
-                      width={56}
-                      height={56}
-                      className="h-full w-full object-contain p-1.5"
-                    />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#141414] text-white shadow-md">
+                    <Smartphone className="h-7 w-7" />
                   </div>
                 </div>
 
@@ -154,8 +150,34 @@ export default function ProductPage() {
             </div>
           </div>
 
+          {/* Web App — Secondary Option */}
+          <div className="mt-8 max-w-5xl mx-auto rounded-3xl border border-[#E8E6DF] bg-white p-8 sm:p-10 shadow-subtle">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="flex items-start gap-5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#E8E6DF] bg-[#FAFAF8] text-[#4A4A4A]">
+                  <Globe className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#141414]">Also available as a web app</h3>
+                  <p className="mt-1 text-sm text-[#737373]">
+                    Access ZEON directly from your browser — no installation required.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://zeon-9d9b5.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-[#E8E6DF] bg-[#FAFAF8] px-6 py-2.5 text-sm font-medium text-[#141414] transition-all hover:bg-[#141414] hover:text-white hover:border-[#141414] active:scale-[0.98]"
+              >
+                <Globe className="h-4 w-4" />
+                <span>Open web app</span>
+              </a>
+            </div>
+          </div>
+
           {/* Quick Installation Steps */}
-          <div className="mt-16 max-w-5xl mx-auto">
+          <div className="mt-14 max-w-5xl mx-auto">
             <h3 className="text-xl font-bold text-[#141414] text-center mb-8">
               Get Started in 3 Simple Steps
             </h3>

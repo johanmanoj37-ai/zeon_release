@@ -12,46 +12,57 @@ export function AppPreview() {
 
   return (
     <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
-      {/* Container Frame */}
+      {/* Container Frame with entrance motion */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="relative overflow-hidden rounded-3xl border border-[#E8E6DF] bg-white p-2 sm:p-3 shadow-hero-mockup backdrop-blur-md"
       >
         <div className="relative overflow-hidden rounded-2xl border border-[#EFECE6] bg-[#FAFAF8]">
           {/* Top Window Bar */}
-          <div className="flex flex-wrap items-center justify-between border-b border-[#EAE7E0] bg-white px-4 py-3 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between border-b border-[#EAE7E0] bg-white px-4 py-3 sm:px-6 gap-3">
             {/* Window Controls & Title */}
             <div className="flex items-center gap-3">
               <div className="flex gap-1.5">
-                <div className="h-2.5 w-2.5 rounded-full bg-[#E5E5E5]" />
-                <div className="h-2.5 w-2.5 rounded-full bg-[#E5E5E5]" />
-                <div className="h-2.5 w-2.5 rounded-full bg-[#E5E5E5]" />
+                <div className="h-2.5 w-2.5 rounded-full bg-[#E5E5E5] transition-colors hover:bg-[#D5D5D5]" />
+                <div className="h-2.5 w-2.5 rounded-full bg-[#E5E5E5] transition-colors hover:bg-[#D5D5D5]" />
+                <div className="h-2.5 w-2.5 rounded-full bg-[#E5E5E5] transition-colors hover:bg-[#D5D5D5]" />
               </div>
               <div className="h-4 w-px bg-[#EAE7E0] hidden sm:block" />
               <div className="flex items-center gap-2">
                 <span className="text-xs font-semibold text-[#141414]">
                   ZEON
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700 border border-emerald-200/50">
-                  <Wifi className="h-2.5 w-2.5" />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-medium text-emerald-700 border border-emerald-200/60 shadow-xs">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                  </span>
                   Live Sync Active
                 </span>
               </div>
             </div>
 
-            {/* Clean Device Switcher Tabs */}
-            <div className="flex items-center gap-1 rounded-xl bg-[#F5F4F0] p-1 text-xs">
+            {/* Sliding Animated Tab Switcher */}
+            <div className="relative flex items-center rounded-xl bg-[#F5F4F0] p-1 text-xs">
               <button
                 type="button"
                 onClick={() => setDeviceView("desktop")}
-                className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 font-medium transition-all ${
+                className={`relative z-10 flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 font-medium transition-colors duration-200 ${
                   deviceView === "desktop"
-                    ? "bg-white text-[#141414] shadow-sm font-semibold"
+                    ? "text-[#141414] font-semibold"
                     : "text-[#6E6E6E] hover:text-[#141414]"
                 }`}
               >
+                {deviceView === "desktop" && (
+                  <motion.div
+                    layoutId="activeDevicePill"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    className="absolute inset-0 bg-white rounded-lg shadow-sm -z-10"
+                  />
+                )}
                 <Monitor className="h-3.5 w-3.5" />
                 <span>Windows Desktop</span>
               </button>
@@ -59,12 +70,19 @@ export function AppPreview() {
               <button
                 type="button"
                 onClick={() => setDeviceView("mobile")}
-                className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 font-medium transition-all ${
+                className={`relative z-10 flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 font-medium transition-colors duration-200 ${
                   deviceView === "mobile"
-                    ? "bg-white text-[#141414] shadow-sm font-semibold"
+                    ? "text-[#141414] font-semibold"
                     : "text-[#6E6E6E] hover:text-[#141414]"
                 }`}
               >
+                {deviceView === "mobile" && (
+                  <motion.div
+                    layoutId="activeDevicePill"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    className="absolute inset-0 bg-white rounded-lg shadow-sm -z-10"
+                  />
+                )}
                 <Smartphone className="h-3.5 w-3.5" />
                 <span>Mobile App</span>
               </button>
@@ -80,7 +98,7 @@ export function AppPreview() {
                   initial={{ opacity: 0, scale: 0.99 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.99 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
                   className="w-full"
                 >
                   <Image
@@ -93,14 +111,17 @@ export function AppPreview() {
               ) : (
                 <motion.div
                   key="mobile-view"
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-full py-10 px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="w-full py-10 sm:py-14 px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14"
                 >
                   {/* Centered Sleek Phone Container */}
-                  <div className="relative w-[240px] sm:w-[280px] rounded-[38px] border-[8px] border-[#141414] bg-[#141414] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)]">
+                  <motion.div
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    className="relative w-[240px] sm:w-[280px] rounded-[38px] border-[8px] border-[#141414] bg-[#141414] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)]"
+                  >
                     {/* Top Notch Pill */}
                     <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-4 w-24 rounded-full bg-[#141414] flex items-center justify-center">
                       <div className="h-2 w-2 rounded-full bg-[#2E2E2E] mr-2" />
@@ -116,7 +137,7 @@ export function AppPreview() {
                         priority
                       />
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Highlights alongside Mobile Phone */}
                   <div className="max-w-sm text-center md:text-left space-y-4">
