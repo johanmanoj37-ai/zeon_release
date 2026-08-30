@@ -13,8 +13,8 @@ import {
 import type { Metadata } from "next";
 
 // Define your direct download links here
-const WINDOWS_DOWNLOAD_URL = "#"; // e.g. "https://your-domain.com/downloads/zeon-windows-setup.exe"
-const ANDROID_APK_DOWNLOAD_URL = "#"; // e.g. "https://your-domain.com/downloads/zeon-mobile.apk"
+const WINDOWS_DOWNLOAD_URL = "https://github.com/johanmanoj37-ai/zeon_release/releases/download/1.1.0/Zeon-1.1.0-Installer.exe";
+const ANDROID_APK_DOWNLOAD_URL = "https://github.com/johanmanoj37-ai/zeon_release/releases/download/1.1.0/Zeon-V1.1.0.apk";
 
 export const metadata: Metadata = {
   title: "Zeon",
