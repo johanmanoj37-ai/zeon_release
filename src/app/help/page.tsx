@@ -1,21 +1,41 @@
-import React from "react";
+"use client";
+
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
-  Play,
   BookOpen,
   FileQuestion,
   ArrowRight,
+  X,
+  Maximize2,
 } from "lucide-react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Zeon",
-  description: "Get help, watch video tutorials, and learn how to use ZEON efficiently.",
-};
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HelpPage() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const modalVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Auto-play when lightbox opens, pause when closed
+  useEffect(() => {
+    if (lightboxOpen && modalVideoRef.current) {
+      modalVideoRef.current.play();
+    }
+    if (!lightboxOpen && modalVideoRef.current) {
+      modalVideoRef.current.pause();
+    }
+  }, [lightboxOpen]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#FCFCF9] text-[#141414] flex flex-col justify-between overflow-hidden">
       {/* Ambient Lighting Backdrop */}
@@ -32,39 +52,27 @@ export default function HelpPage() {
             </p>
           </div>
 
-          {/* Video Placeholder Container */}
+          {/* Video — auto-plays on page open, click expand for lightbox */}
           <div className="max-w-4xl mx-auto">
             <div className="relative overflow-hidden rounded-3xl border border-[#E8E6DF] bg-white p-3 sm:p-4 shadow-hero-mockup">
-              {/* 
-                ==========================================================
-                VIDEO PLACEHOLDER:
-                Replace this placeholder block with your iframe (e.g. YouTube/Loom) 
-                or HTML5 <video controls src="/your-video.mp4" />
-                ==========================================================
-              */}
-              <div className="group relative aspect-video w-full overflow-hidden rounded-2xl bg-[#141414] flex flex-col items-center justify-center text-center p-6 cursor-pointer select-none">
-                {/* Subtle ambient glow inside video frame */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-
-                {/* Center Play Button Action */}
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                  <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white text-[#141414] shadow-2xl transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
-                    <Play className="h-7 w-7 sm:h-8 sm:w-8 translate-x-0.5 fill-current" />
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-xl font-bold text-white">
-                      Complete Setup &amp; Overview Guide
-                    </h3>
-                    <p className="mt-1 text-xs sm:text-sm text-neutral-400">
-                      Click to play walkthrough video
-                    </p>
-                  </div>
-                </div>
-
-                {/* Video Duration Badge */}
-                <div className="absolute bottom-4 right-4 z-10 rounded-md bg-black/70 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
-                  Video Placeholder
-                </div>
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#141414]">
+                <video
+                  className="w-full h-full object-cover"
+                  src="/Zeondemo.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                />
+                {/* Expand to lightbox */}
+                <button
+                  onClick={() => setLightboxOpen(true)}
+                  className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-md bg-black/60 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm hover:bg-black/80 transition-colors"
+                >
+                  <Maximize2 className="h-3 w-3" />
+                  <span>Expand</span>
+                </button>
               </div>
             </div>
           </div>
@@ -128,6 +136,47 @@ export default function HelpPage() {
       </div>
 
       <Footer />
+
+      {/* Video Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-8"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setLightboxOpen(false)}
+                className="absolute top-3 right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 transition-colors"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              {/* Actual Video */}
+              <video
+                ref={modalVideoRef}
+                className="w-full aspect-video bg-black"
+                controls
+                playsInline
+                src="/Zeondemo.mp4"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
