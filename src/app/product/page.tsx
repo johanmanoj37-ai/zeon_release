@@ -14,7 +14,7 @@ import type { Metadata } from "next";
 
 // Define direct download links
 const WINDOWS_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-1.2.6-Installer.exe";
-const ANDROID_APK_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-V1.2.6.apk";
+const ANDROID_APK_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-V1.2.7.apk";
 
 export const metadata: Metadata = {
   title: "Zeon",
