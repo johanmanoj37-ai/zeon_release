@@ -14,8 +14,8 @@ import {
 import type { Metadata } from "next";
 
 // Define direct download links
-const WINDOWS_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-1.2.7-Installer.exe";
-const ANDROID_APK_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-V1.2.7.apk";
+const WINDOWS_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-1.3.0-Installer.exe";
+const ANDROID_APK_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-V1.3.0.apk";
 
 export const metadata: Metadata = {
   title: "Zeon",
@@ -100,7 +100,7 @@ export default function ProductPage() {
               <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/60">
                 <a
                   href={WINDOWS_DOWNLOAD_URL}
-                  download="Zeon-1.2.5-Installer.exe"
+                  download="Zeon-1.3.0-Installer.exe"
                   className="group flex w-full items-center justify-center gap-2.5 rounded-full bg-[#141414] px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-medium text-white shadow-sm transition-all hover:bg-[#262626] active:scale-[0.98] touch-manipulation"
                 >
                   <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
@@ -161,7 +161,7 @@ export default function ProductPage() {
               <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/60">
                 <a
                   href={ANDROID_APK_DOWNLOAD_URL}
-                  download="Zeon-V1.2.5.apk"
+                  download="Zeon-V1.3.0.apk"
                   className="group flex w-full items-center justify-center gap-2.5 rounded-full bg-[#141414] px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-medium text-white shadow-sm transition-all hover:bg-[#262626] active:scale-[0.98] touch-manipulation"
                 >
                   <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
