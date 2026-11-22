@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
   ChevronDown,
-  ArrowRight,
+  Mail,
+  Phone,
 } from "lucide-react";
 
 interface FaqItem {
@@ -288,14 +288,21 @@ export default function HelpPage() {
             <p className="mt-2 text-xs sm:text-sm text-[#5A5A5A]">
               Get in touch with our team directly for one-on-one help and questions.
             </p>
-            <div className="mt-6 flex justify-center">
-              <Link
-                href="/about"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#141414] px-6 py-3 text-xs sm:text-sm font-medium text-white shadow-sm transition-all hover:bg-[#262626]"
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <a
+                href="mailto:support.zeon@xeops.in"
+                className="group flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#141414] px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-[#262626] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98] touch-manipulation"
               >
-                <span>Contact Us</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+                <Mail className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+                <span>Email: support.zeon@xeops.in</span>
+              </a>
+              <a
+                href="tel:9447141984"
+                className="group flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#141414] px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-[#262626] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98] touch-manipulation"
+              >
+                <Phone className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+                <span>Call Directly: 9447141984</span>
+              </a>
             </div>
           </div>
         </main>
