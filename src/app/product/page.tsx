@@ -10,6 +10,7 @@ import {
   Download,
   CheckCircle2,
   Globe,
+  Mail,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -202,6 +203,38 @@ export default function ProductPage() {
               >
                 <Globe className="h-4 w-4" />
                 <span>Open web app</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Contact Sales / Setup Assistance Card */}
+          <div
+            className="mt-6 sm:mt-8 max-w-5xl mx-auto rounded-3xl border border-white/60 p-6 sm:p-10 transition-all duration-300 hover:border-white/85"
+            style={{
+              background: "linear-gradient(135deg, rgba(255, 255, 255, 0.62) 0%, rgba(228, 233, 240, 0.42) 50%, rgba(240, 243, 246, 0.52) 100%)",
+              backdropFilter: "blur(14px) saturate(118%)",
+              WebkitBackdropFilter: "blur(14px) saturate(118%)",
+              boxShadow: "0 8px 28px -4px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04), inset 0 1.5px 0px 0px rgba(255, 255, 255, 0.90), inset 0 -1px 0px 0px rgba(180, 190, 205, 0.20)",
+            }}
+          >
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl border border-white/65 bg-white/45 text-[#4A4A4A] backdrop-blur-sm">
+                  <Mail className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#141414]">Need help setting up? Contact our sales team</h3>
+                  <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-[#737373]">
+                    Reach out at zeon_sales@xeops.in for guided onboarding, custom plans, and warehouse integration.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="mailto:zeon_sales@xeops.in"
+                className="group inline-flex w-full sm:w-auto justify-center shrink-0 items-center gap-2 rounded-full border border-white/65 bg-white/45 px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-medium text-[#141414] backdrop-blur-sm transition-all hover:bg-[#141414] hover:text-white hover:border-[#141414] active:scale-[0.98] touch-manipulation"
+              >
+                <Mail className="h-4 w-4" />
+                <span>zeon_sales@xeops.in</span>
               </a>
             </div>
           </div>
