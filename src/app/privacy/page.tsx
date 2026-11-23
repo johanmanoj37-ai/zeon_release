@@ -14,8 +14,16 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Zeon",
-  description: "Privacy Policy for Zeon Warehouse & Order Management platform.",
+  title: "Privacy Policy — Data Safeguards & DPDPA Compliance",
+  description:
+    "Official Privacy Policy for ZEON Warehouse & Order Management platform. Explains data processing roles, security controls, AES-256 encryption, and rights under DPDPA 2023.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPage() {

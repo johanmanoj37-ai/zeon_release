@@ -311,7 +311,7 @@ function CentralGlassOrb() {
         <div style={{ position: "relative", zIndex: 10, width: "44%", height: "44%" }}>
           <Image
             src="/logo.png"
-            alt="Zeon"
+            alt="ZEON - Warehouse & Order Management Logo"
             fill
             className="object-contain"
             style={{ filter: "brightness(0)", opacity: 0.98 }}
@@ -410,7 +410,7 @@ function MobileCentralGlassOrb() {
         <div style={{ position: "relative", zIndex: 10, width: "45%", height: "45%" }}>
           <Image
             src="/logo.png"
-            alt="Zeon"
+            alt="ZEON - Warehouse & Order Management Logo"
             fill
             className="object-contain"
             style={{ filter: "brightness(0)", opacity: 0.98 }}

@@ -15,13 +15,62 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Zeon",
-  description: "Learn more about our philosophy, core values, and get in touch directly.",
+  title: "About — Purposeful Software Architecture",
+  description:
+    "Learn more about ZEON's product philosophy, engineering principles, and enterprise foundation by XEOPS. Engineered for speed, stability, and calm warehouse operations.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About ZEON — Purposeful Software Architecture by XEOPS",
+    description:
+      "Learn more about ZEON's product philosophy, engineering principles, and enterprise foundation by XEOPS.",
+    url: "/about",
+    images: [
+      {
+        url: "/hero_final.png",
+        width: 1200,
+        height: 630,
+        alt: "About ZEON and XEOPS",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About ZEON — Purposeful Software Architecture by XEOPS",
+    description:
+      "Learn more about ZEON's product philosophy, engineering principles, and enterprise foundation by XEOPS.",
+    images: ["/hero_final.png"],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://zeon.xeops.in",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About",
+      item: "https://zeon.xeops.in/about",
+    },
+  ],
 };
 
 export default function AboutPage() {
   return (
-    <div
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div
       className="relative min-h-screen text-[#141414] flex flex-col justify-between overflow-x-clip"
       style={{
         background: `
@@ -249,5 +298,6 @@ export default function AboutPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

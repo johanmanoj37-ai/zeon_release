@@ -18,7 +18,7 @@ export function Footer() {
           <Link href="/" className="group">
             <Image
               src="/brand.png"
-              alt="ZEON"
+              alt="ZEON - Warehouse & Order Management Logo"
               width={100}
               height={30}
               className="h-6 w-auto object-contain transition-opacity hover:opacity-80"
@@ -27,7 +27,27 @@ export function Footer() {
 
           {/* Copyright, Terms and Privacy Modal Triggers */}
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs text-[#737373] text-center sm:text-left">
-            <p suppressHydrationWarning>© {new Date().getFullYear()} XEOPS. All rights reserved. ZEON™ is a product of XEOPS.</p>
+            <p suppressHydrationWarning>
+              © {new Date().getFullYear()}{" "}
+              <a
+                href="https://xeops.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#5A5A5A] transition-colors hover:text-[#141414] hover:underline"
+              >
+                XEOPS
+              </a>
+              . All rights reserved. ZEON™ is a product of{" "}
+              <a
+                href="https://xeops.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#5A5A5A] transition-colors hover:text-[#141414] hover:underline"
+              >
+                XEOPS
+              </a>
+              .
+            </p>
             <div className="flex items-center gap-4 sm:gap-6">
               <button
                 type="button"

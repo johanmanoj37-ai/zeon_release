@@ -19,13 +19,62 @@ const WINDOWS_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.de
 const ANDROID_APK_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-V1.3.0.apk";
 
 export const metadata: Metadata = {
-  title: "Zeon",
-  description: "Download ZEON Warehouse Management and Online Order Taking software for Windows desktop and Android mobile APK devices.",
+  title: "Download Apps — Windows Desktop & Android Mobile",
+  description:
+    "Download ZEON for Windows desktop (.exe) and Android mobile (.apk), or launch the web app. High-speed footwear catalog browsing, offline-ready wholesale order taking, and real-time inventory sync.",
+  alternates: {
+    canonical: "/product",
+  },
+  openGraph: {
+    title: "Download ZEON Apps — Windows Desktop & Android Mobile",
+    description:
+      "Get ZEON for Windows desktop (.exe) and Android mobile (.apk), or access via browser. Built for high-volume wholesale warehouses and distributor sales teams.",
+    url: "/product",
+    images: [
+      {
+        url: "/hero_final.png",
+        width: 1200,
+        height: 630,
+        alt: "Download ZEON Apps for Windows and Android",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Download ZEON Apps — Windows Desktop & Android Mobile",
+    description:
+      "Get ZEON for Windows desktop (.exe) and Android mobile (.apk). Built for wholesale warehouses and distributor sales teams.",
+    images: ["/hero_final.png"],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://zeon.xeops.in",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Product & Downloads",
+      item: "https://zeon.xeops.in/product",
+    },
+  ],
 };
 
 export default function ProductPage() {
   return (
-    <div
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div
       className="relative min-h-screen text-[#141414] flex flex-col justify-between overflow-x-clip"
       style={{
         background: `
@@ -246,5 +295,6 @@ export default function ProductPage() {
 
       <Footer />
     </div>
+    </>
   );
 }
