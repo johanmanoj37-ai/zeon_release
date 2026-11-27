@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Fraunces, Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { SITE_URL, organizationSchema, websiteSchema } from "@/lib/seo-schema";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -24,16 +25,14 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zeon.xeops.in";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "ZEON | B2B Warehouse Inventory & Wholesale Order Management",
-    template: "%s | ZEON",
+    default: "ZEON by XEOPS | B2B Warehouse & Wholesale Order Software",
+    template: "%s | ZEON by XEOPS",
   },
   description:
-    "ZEON brings your orders, customers, inventory, and team into one calm, unified workspace. Designed for footwear and wholesale businesses across Windows desktop and Android mobile.",
+    "ZEON by XEOPS brings your orders, customers, inventory, and team into one calm B2B workspace. Built for footwear and wholesale businesses on Windows and Android.",
   applicationName: "ZEON",
   authors: [
     { name: "XEOPS", url: "https://xeops.in" },
@@ -42,6 +41,8 @@ export const metadata: Metadata = {
   generator: "Next.js",
   keywords: [
     "ZEON",
+    "ZEON by XEOPS",
+    "ZEON WMS",
     "warehouse management system",
     "wholesale order management",
     "footwear inventory software",
@@ -66,26 +67,26 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
-    siteName: "ZEON",
-    title: "ZEON | B2B Warehouse Inventory & Wholesale Order Management",
+    url: SITE_URL,
+    siteName: "ZEON by XEOPS",
+    title: "ZEON by XEOPS | B2B Warehouse & Wholesale Order Software",
     description:
-      "Bring your orders, customers, inventory, and team into one calm workspace. Fast catalog browsing, offline-ready order booking, and real-time sync for Windows and Android.",
+      "Bring your orders, customers, inventory, and team into one calm workspace. Fast catalog browsing, real-time stock sync, and PDF order summaries for Windows and Android.",
     images: [
       {
-        url: "/hero_final.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ZEON B2B Warehouse & Order Management Workspace",
+        alt: "ZEON by XEOPS — B2B Warehouse & Wholesale Order Management",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZEON | B2B Warehouse Inventory & Wholesale Order Management",
+    title: "ZEON by XEOPS | B2B Warehouse & Wholesale Order Software",
     description:
       "Bring your orders, customers, inventory, and team into one calm workspace. Built for Windows desktop and Android mobile by XEOPS.",
-    images: ["/hero_final.png"],
+    images: ["/og-image.jpg"],
     creator: "@xeops",
   },
   robots: {
@@ -106,77 +107,20 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${siteUrl}/#organization`,
-  name: "XEOPS",
-  url: "https://xeops.in",
-  logo: `${siteUrl}/logo.png`,
-  founder: {
-    "@type": "Person",
-    name: "Johan P Manoj",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "support.zeon@xeops.in",
-    contactType: "customer support",
-    areaServed: "IN",
-    availableLanguage: ["English"],
-  },
-};
-
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "@id": `${siteUrl}/#software`,
-  name: "ZEON",
-  operatingSystem: "Windows 10, Windows 11, Android 8.0+, Modern Web Browsers",
-  applicationCategory: "BusinessApplication",
-  description:
-    "B2B warehouse inventory and wholesale order management system specifically designed for footwear catalog management, stock tracking, wholesale order booking, and automated PDF invoicing.",
-  image: `${siteUrl}/hero_final.png`,
-  author: {
-    "@type": "Organization",
-    name: "XEOPS",
-    url: "https://xeops.in",
-  },
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "INR",
-    description: "Complimentary evaluation trial with full platform access.",
-  },
-};
-
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${siteUrl}/#website`,
-  url: siteUrl,
-  name: "ZEON",
-  description: "B2B Warehouse Inventory & Wholesale Order Management System",
-  publisher: {
-    "@id": `${siteUrl}/#organization`,
-  },
-  inLanguage: "en-US",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${fraunces.variable} ${plusJakarta.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${playfair.variable} ${fraunces.variable} ${plusJakarta.variable} ${inter.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
         />
         <script
           type="application/ld+json"

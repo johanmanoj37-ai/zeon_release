@@ -313,6 +313,7 @@ function CentralGlassOrb() {
             src="/logo.png"
             alt="ZEON - Warehouse & Order Management Logo"
             fill
+            sizes="(max-width: 768px) 60px, 110px"
             className="object-contain"
             style={{ filter: "brightness(0)", opacity: 0.98 }}
             priority
@@ -412,6 +413,7 @@ function MobileCentralGlassOrb() {
             src="/logo.png"
             alt="ZEON - Warehouse & Order Management Logo"
             fill
+            sizes="(max-width: 768px) 60px, 110px"
             className="object-contain"
             style={{ filter: "brightness(0)", opacity: 0.98 }}
             priority
@@ -524,9 +526,9 @@ function MobileHeroSection() {
           <div className="flex items-start gap-2">
             <MobileIconBox>{icon}</MobileIconBox>
             <div className="flex-1 min-w-0 pt-0.5">
-              <h3 className="text-[12px] sm:text-[13px] font-semibold text-[#090D16] tracking-tight leading-tight">
+              <p className="text-[12px] sm:text-[13px] font-semibold text-[#090D16] tracking-tight leading-tight">
                 {title}
-              </h3>
+              </p>
               <div className="text-[9.5px] sm:text-[10px] text-[#475569] leading-[1.3] font-normal mt-0.5">
                 {desc}
               </div>
@@ -726,43 +728,37 @@ export function Hero() {
       <div className="w-full mx-auto max-w-7xl px-4 sm:px-8 lg:px-14">
         <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-0 w-full min-w-0">
 
-          {/* â”€â”€â”€ LEFT COLUMN â”€â”€â”€ */}
+          {/* ─── LEFT COLUMN ─── */}
           <div className="lg:col-span-5 text-left w-full min-w-0">
 
             {/* Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <h1
-                className="font-serif text-[50px] sm:text-6xl md:text-7xl lg:text-[78px] xl:text-[86px] font-bold tracking-[-0.025em] text-[#111111] leading-[0.96]"
-              >
-                Zeon.
+            <div>
+              <h1 className="tracking-[-0.025em] text-[#111111]">
+                <span className="block font-serif text-[50px] sm:text-6xl md:text-7xl lg:text-[78px] xl:text-[86px] font-bold leading-[0.96]">
+                  ZEON.
+                </span>
+                <span className="mt-2 sm:mt-3 block font-canela text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-medium tracking-[-0.02em] text-[#525866] leading-[1.18]">
+                  B2B Warehouse Inventory &amp; Wholesale Order Management.
+                </span>
               </h1>
-              <div className="font-canela text-2xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-medium tracking-[-0.02em] text-[#6B7280] leading-[1.14] mt-2 sm:mt-3">
-                <span className="block">Your business,</span>
-                <span className="block text-[#6B7280]">in sync.</span>
-              </div>
-            </motion.div>
+            </div>
 
             {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 sm:mt-6 max-w-[440px] text-sm sm:text-base leading-relaxed text-[#4A4A4A] font-normal"
-            >
-              Bring your orders, customers, inventory, and team together in one seamless workspace.
-            </motion.p>
+            <p className="mt-4 sm:mt-6 max-w-[460px] text-sm sm:text-base leading-relaxed text-[#4A4A4A] font-normal">
+              Your business, in sync. Built by{" "}
+              <a
+                href="https://xeops.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#141414] underline decoration-[#141414]/30 underline-offset-4 hover:decoration-[#141414]"
+              >
+                XEOPS
+              </a>{" "}
+              for footwear &amp; wholesale distributors across Windows desktop and Android mobile.
+            </p>
 
             {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 sm:mt-7 flex items-center gap-4"
-            >
+            <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
               {/* Get started */}
               <Link
                 href="/product"
@@ -774,15 +770,21 @@ export function Hero() {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </Link>
-            </motion.div>
+              <Link
+                href="/features"
+                className="inline-flex h-11 items-center rounded-full border border-[#141414]/20 bg-white/45 hover:bg-white/75 px-5 text-[14px] font-medium text-[#141414] backdrop-blur-sm transition-all duration-200"
+              >
+                Explore features
+              </Link>
+            </div>
           </div>
 
-          {/* â”€â”€â”€ RIGHT COLUMN (DESKTOP & TABLET >= md): Full 3D Orbital Composition â”€â”€â”€ */}
+          {/* ─── RIGHT COLUMN (DESKTOP & TABLET >= md): Full 3D Orbital Composition ─── */}
           <div className="hidden md:flex lg:col-span-7 relative items-center justify-center lg:justify-end mt-8 lg:mt-0 w-full select-none lg:translate-x-6 xl:translate-x-10">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              initial={false}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               className="relative w-full max-w-[580px] lg:max-w-[720px] xl:max-w-[800px]"
               style={{ aspectRatio: "800/620" }}
             >
@@ -885,7 +887,7 @@ export function Hero() {
                           <IconBox><IconCustomers /></IconBox>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
-                              <h3 className="text-[13px] sm:text-[14px] md:text-[15px] font-semibold text-[#090D16] tracking-tight truncate">Customers</h3>
+                              <p className="text-[13px] sm:text-[14px] md:text-[15px] font-semibold text-[#090D16] tracking-tight truncate">Customers</p>
                               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-slate-400/80" />
                             </div>
                             <p className="text-[11px] sm:text-[12px] md:text-[12.5px] leading-snug font-medium text-[#334155]">Manage your customers with ease.</p>
@@ -906,7 +908,7 @@ export function Hero() {
                           <IconBox><IconOrders /></IconBox>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
-                              <h3 className="text-[13px] sm:text-[14px] md:text-[15px] font-semibold text-[#090D16] tracking-tight truncate">Orders</h3>
+                              <p className="text-[13px] sm:text-[14px] md:text-[15px] font-semibold text-[#090D16] tracking-tight truncate">Orders</p>
                               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-slate-400/80" />
                             </div>
                             <p className="text-[11px] sm:text-[12px] md:text-[12.5px] leading-snug font-medium text-[#334155]">Track and manage orders in real time.</p>
@@ -927,7 +929,7 @@ export function Hero() {
                           <IconBox><IconTeam /></IconBox>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
-                              <h3 className="text-[13px] sm:text-[14px] md:text-[15px] font-semibold text-[#090D16] tracking-tight truncate">Team</h3>
+                              <p className="text-[13px] sm:text-[14px] md:text-[15px] font-semibold text-[#090D16] tracking-tight truncate">Team</p>
                               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-slate-400/80" />
                             </div>
                             <p className="text-[11px] sm:text-[12px] md:text-[12.5px] leading-snug font-medium text-[#334155]">Collaborate and achieve more.</p>
@@ -948,7 +950,7 @@ export function Hero() {
                           <IconBox><IconBarChart /></IconBox>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-0.5">
-                              <h3 className="text-[12px] sm:text-[13px] md:text-[14px] font-semibold text-[#090D16] tracking-tight truncate">Business Growth</h3>
+                              <p className="text-[12px] sm:text-[13px] md:text-[14px] font-semibold text-[#090D16] tracking-tight truncate">Business Growth</p>
                               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-slate-400/80" />
                             </div>
                             <span className="text-[19px] sm:text-[23px] md:text-[26px] font-bold text-[#090D16] leading-none tracking-tight block mt-0.5">+32%</span>
@@ -979,15 +981,9 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* â”€â”€â”€ RIGHT COLUMN (MOBILE < md): Scroll-triggered Orb + Cards â”€â”€â”€ */}
+          {/* ─── RIGHT COLUMN (MOBILE < md): Scroll-triggered Orb + Cards ─── */}
           <div className="block md:hidden mt-4 w-full min-w-0 max-w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <MobileHeroSection />
-            </motion.div>
+            <MobileHeroSection />
           </div>
 
         </div>

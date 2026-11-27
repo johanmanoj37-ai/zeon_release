@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { buildBreadcrumbSchema } from "@/lib/seo-schema";
 
 export const metadata: Metadata = {
-  title: "Help Center & FAQ — Setup, Sync & Operations Guide",
+  title: "Help Center & FAQ — Setup & Sync Guide",
   description:
     "Find answers to common questions about ZEON warehouse management, evaluation trials, offline order booking, cloud sync, security safeguards, and support.",
   alternates: {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     url: "/help",
     images: [
       {
-        url: "/hero_final.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "ZEON Help Center and FAQ",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     title: "ZEON Help Center & FAQ — Setup, Sync & Operations Guide",
     description:
       "Find answers to common questions about ZEON warehouse management, evaluation trials, and support.",
-    images: ["/hero_final.png"],
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -117,24 +118,10 @@ const faqSchema = {
   ],
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://zeon.xeops.in",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Help Center",
-      item: "https://zeon.xeops.in/help",
-    },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Help Center", path: "/help" },
+]);
 
 export default function HelpLayout({
   children,

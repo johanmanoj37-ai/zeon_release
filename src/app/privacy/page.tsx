@@ -14,7 +14,7 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Data Safeguards & DPDPA Compliance",
+  title: "Privacy Policy — DPDPA & Data Safeguards",
   description:
     "Official Privacy Policy for ZEON Warehouse & Order Management platform. Explains data processing roles, security controls, AES-256 encryption, and rights under DPDPA 2023.",
   alternates: {

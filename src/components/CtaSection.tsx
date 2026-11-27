@@ -1,18 +1,11 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export function CtaSection() {
   return (
     <section className="relative py-12 sm:py-24 max-w-6xl mx-auto px-4 sm:px-10 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+      <div
         className="relative overflow-hidden rounded-3xl border border-white/60 p-7 sm:p-16 text-center transition-all duration-300 hover:border-white/85"
         style={{
           background: "linear-gradient(135deg, rgba(255, 255, 255, 0.62) 0%, rgba(228, 233, 240, 0.42) 50%, rgba(240, 243, 246, 0.52) 100%)",
@@ -46,7 +39,7 @@ export function CtaSection() {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

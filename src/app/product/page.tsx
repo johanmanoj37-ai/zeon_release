@@ -13,15 +13,16 @@ import {
   Mail,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { softwareSchema, buildBreadcrumbSchema } from "@/lib/seo-schema";
 
 // Define direct download links
 const WINDOWS_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-1.3.0-Installer.exe";
 const ANDROID_APK_DOWNLOAD_URL = "https://pub-2eaefafb3b7549059373fad40f311534.r2.dev/Zeon-V1.3.0.apk";
 
 export const metadata: Metadata = {
-  title: "Download Apps — Windows Desktop & Android Mobile",
+  title: "Download Apps — Windows & Android",
   description:
-    "Download ZEON for Windows desktop (.exe) and Android mobile (.apk), or launch the web app. High-speed footwear catalog browsing, offline-ready wholesale order taking, and real-time inventory sync.",
+    "Download ZEON by XEOPS for Windows desktop (.exe) and Android mobile (.apk), or launch the web app. Footwear catalog browsing, wholesale order booking, and real-time sync.",
   alternates: {
     canonical: "/product",
   },
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     url: "/product",
     images: [
       {
-        url: "/hero_final.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Download ZEON Apps for Windows and Android",
@@ -44,32 +45,22 @@ export const metadata: Metadata = {
     title: "Download ZEON Apps — Windows Desktop & Android Mobile",
     description:
       "Get ZEON for Windows desktop (.exe) and Android mobile (.apk). Built for wholesale warehouses and distributor sales teams.",
-    images: ["/hero_final.png"],
+    images: ["/og-image.jpg"],
   },
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://zeon.xeops.in",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Product & Downloads",
-      item: "https://zeon.xeops.in/product",
-    },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Product & Downloads", path: "/product" },
+]);
 
 export default function ProductPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -238,7 +229,7 @@ export default function ProductPage() {
                   <Globe className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#141414]">Also available as a web app</h3>
+                  <h2 className="text-base font-bold text-[#141414]">Also available as a web app</h2>
                   <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-[#737373]">
                     Access ZEON directly from your browser — no installation required.
                   </p>
@@ -272,7 +263,7 @@ export default function ProductPage() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#141414]">Need help setting up? Contact our sales team</h3>
+                  <h2 className="text-base font-bold text-[#141414]">Need help setting up? Contact our sales team</h2>
                   <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-[#737373]">
                     Reach out at zeon_sales@xeops.in for guided onboarding, custom plans, and warehouse integration.
                   </p>

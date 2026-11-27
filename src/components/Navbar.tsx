@@ -76,12 +76,18 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links (Centered) */}
-          <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium text-[#404040]">
+          <nav className="hidden md:flex items-center gap-9 text-[15px] font-medium text-[#404040]">
             <Link
               href="/product"
               className="transition-colors hover:text-[#141414]"
             >
               Product
+            </Link>
+            <Link
+              href="/features"
+              className="transition-colors hover:text-[#141414]"
+            >
+              Features
             </Link>
             <Link
               href="/help"
@@ -156,6 +162,13 @@ export function Navbar() {
                     className="py-1.5 hover:text-[#141414] active:text-[#141414] text-lg font-semibold"
                   >
                     Product
+                  </Link>
+                  <Link
+                    href="/features"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="py-1.5 hover:text-[#141414] active:text-[#141414] text-lg font-semibold"
+                  >
+                    Features
                   </Link>
                   <Link
                     href="/help"

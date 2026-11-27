@@ -13,10 +13,10 @@ export function AppPreview() {
       <div className="relative pl-1 sm:pl-3 md:pl-5 pr-4 sm:pr-8 md:pr-12 lg:pr-14">
         {/* Main Laptop & Phone Mockup Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={false}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto"
         >
           {/* ─── LAPTOP UNIT ─── */}
@@ -62,9 +62,9 @@ export function AppPreview() {
                 <div className="relative w-full overflow-hidden bg-[#FDFDFB]">
                   <Image
                     src={desktopImg}
-                    alt="ZEON Desktop Workspace Preview"
+                    alt="ZEON Desktop Workspace Preview — Multi-Variant Footwear Inventory Grid"
+                    sizes="(max-width: 768px) 100vw, 1200px"
                     className="w-full h-auto object-cover object-top"
-                    priority
                   />
                 </div>
               </div>
@@ -85,10 +85,7 @@ export function AppPreview() {
 
           {/* ─── MOBILE PHONE MOCKUP (RIGHT SIDE, RESPONSIVE SCALING) ─── */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            initial={false}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
             className="absolute bottom-0 sm:bottom-0.5 md:bottom-1 -right-1 sm:-right-4 md:-right-6 lg:-right-7 z-30 w-[95px] xs:w-[120px] sm:w-[165px] md:w-[210px] lg:w-[245px] rounded-[18px] sm:rounded-[36px] md:rounded-[40px] border-[3.5px] sm:border-[7px] md:border-[8px] border-[#0D0D11] bg-[#0D0D11] shadow-[-16px_10px_32px_rgba(0,0,0,0.45),0_25px_50px_-10px_rgba(0,0,0,0.45)] ring-1 ring-white/10"
           >
@@ -101,9 +98,9 @@ export function AppPreview() {
             <div className="relative overflow-hidden rounded-[14px] sm:rounded-[28px] md:rounded-[32px] bg-white">
               <Image
                 src={mobileImg}
-                alt="ZEON Mobile App Preview"
+                alt="ZEON Android Mobile Order Taking App Preview"
+                sizes="(max-width: 640px) 120px, 245px"
                 className="w-full h-auto object-cover object-top"
-                priority
               />
             </div>
           </motion.div>

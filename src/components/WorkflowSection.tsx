@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 
 const steps = [
   {
@@ -44,35 +42,19 @@ export function WorkflowSection() {
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#141414]"
-          >
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#141414]">
             How it works
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-3 text-xs sm:text-sm text-[#5A5A5A]"
-          >
+          </h2>
+          <p className="mt-3 text-xs sm:text-sm text-[#5A5A5A]">
             A straightforward flow built to keep your wholesale order management moving fast.
-          </motion.p>
+          </p>
         </div>
 
         {/* 3 Step Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((item, idx) => (
-            <motion.div
+          {steps.map((item) => (
+            <div
               key={item.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.12 }}
               className="flex flex-col justify-between"
             >
               <div>
@@ -101,7 +83,7 @@ export function WorkflowSection() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

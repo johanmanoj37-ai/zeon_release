@@ -17,7 +17,7 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Platform Licensing & Commercial Agreement",
+  title: "Terms of Service — Licensing & Trial",
   description:
     "Official Terms of Service governing access, evaluation trials, and commercial licensing for ZEON Warehouse & Order Management system developed and operated by XEOPS.",
   alternates: {

@@ -115,91 +115,29 @@ export function FeaturesGrid() {
     <section className="relative py-12 sm:py-24 max-w-6xl mx-auto px-4 sm:px-10 lg:px-8 overflow-x-clip">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-[#141414]"
-        >
+        <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-[#141414]">
           Business, brought together.
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="mt-3 sm:mt-4 text-sm sm:text-lg text-[#5A5A5A] text-balance"
-        >
+        <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-[#5A5A5A] text-balance">
           Orders, inventory, customers, and teams — all working together in one seamless workspace.
-        </motion.p>
+        </p>
       </div>
 
-      {/* ─── MOBILE LAYOUT (< md): Stacked 1-Column with Alternating Fast Left / Right Pop-Up ─── */}
-      <div className="flex flex-col gap-6 md:hidden">
-        {features.map((feature, idx) => {
-          const isFromLeft = idx % 2 === 0;
-
-          return (
-            <motion.div
-              key={`m-${feature.title}`}
-              initial={{
-                opacity: 0,
-                x: isFromLeft ? -80 : 80,
-                y: 16,
-                scale: 0.95,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.05,
-                margin: "0px 0px 40px 0px",
-              }}
-              transition={{
-                duration: 0.28,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              onPointerMove={handlePointerMove}
-              onPointerEnter={handlePointerMove}
-              className="group relative flex flex-col justify-between rounded-3xl border border-white/60 p-6 sm:p-8 overflow-hidden transition-all duration-300 hover:border-white/85 hover:shadow-[0_20px_48px_-10px_rgba(15,23,42,0.14)]"
-              style={cardStyle}
-            >
-              <CardInner feature={feature} />
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* ─── DESKTOP LAYOUT (>= md): Responsive 2/3 Column Grid with Staggered Rise ─── */}
-      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature, idx) => {
-          return (
-            <motion.div
-              key={`d-${feature.title}`}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{
-                duration: 0.5,
-                delay: idx * 0.08,
-                ease: "easeOut",
-              }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              onPointerMove={handlePointerMove}
-              onPointerEnter={handlePointerMove}
-              className="group relative flex flex-col justify-between rounded-3xl border border-white/60 p-6 sm:p-8 overflow-hidden transition-all duration-300 hover:border-white/85 hover:shadow-[0_20px_48px_-10px_rgba(15,23,42,0.14)]"
-              style={cardStyle}
-            >
-              <CardInner feature={feature} />
-            </motion.div>
-          );
-        })}
+      {/* Unified Responsive Feature Grid (single DOM tree for SSR & accessibility) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((feature) => (
+          <motion.div
+            key={feature.title}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            onPointerMove={handlePointerMove}
+            onPointerEnter={handlePointerMove}
+            className="group relative flex flex-col justify-between rounded-3xl border border-white/60 p-6 sm:p-8 overflow-hidden transition-all duration-300 hover:border-white/85 hover:shadow-[0_20px_48px_-10px_rgba(15,23,42,0.14)]"
+            style={cardStyle}
+          >
+            <CardInner feature={feature} />
+          </motion.div>
+        ))}
       </div>
     </section>
   );

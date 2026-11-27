@@ -248,6 +248,7 @@ export default function HelpPage() {
                       onClick={() => toggleFaq(index)}
                       className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer transition-colors"
                       aria-expanded={isOpen}
+                      aria-controls={`${faq.id}-answer`}
                     >
                       <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
                         <span className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-lg bg-white/50 border border-white/70 text-xs font-semibold text-[#141414] shadow-xs select-none">
@@ -264,13 +265,19 @@ export default function HelpPage() {
                       />
                     </button>
 
-                    {isOpen && (
-                      <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm text-[#4A4A4A] leading-relaxed border-t border-black/5 animate-in fade-in-50 duration-200">
-                        <div className="pl-0 sm:pl-12">
-                          {faq.answer}
-                        </div>
+                    <div
+                      id={`${faq.id}-answer`}
+                      className={
+                        isOpen
+                          ? "px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm text-[#4A4A4A] leading-relaxed border-t border-black/5"
+                          : "hidden"
+                      }
+                      aria-hidden={!isOpen}
+                    >
+                      <div className="pl-0 sm:pl-12">
+                        {faq.answer}
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               })}
@@ -297,11 +304,11 @@ export default function HelpPage() {
                 <span>Email: support.zeon@xeops.in</span>
               </a>
               <a
-                href="tel:9447141984"
+                href="tel:+919447141984"
                 className="group flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-[#141414] px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-[#262626] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98] touch-manipulation"
               >
                 <Phone className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-                <span>Call Directly: 9447141984</span>
+                <span>Call Directly: +91 94471 41984</span>
               </a>
             </div>
           </div>

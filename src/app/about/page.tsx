@@ -13,9 +13,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { buildBreadcrumbSchema } from "@/lib/seo-schema";
 
 export const metadata: Metadata = {
-  title: "About — Purposeful Software Architecture",
+  title: "About XEOPS & ZEON Architecture",
   description:
     "Learn more about ZEON's product philosophy, engineering principles, and enterprise foundation by XEOPS. Engineered for speed, stability, and calm warehouse operations.",
   alternates: {
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: "/about",
     images: [
       {
-        url: "/hero_final.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "About ZEON and XEOPS",
@@ -40,28 +41,14 @@ export const metadata: Metadata = {
     title: "About ZEON — Purposeful Software Architecture by XEOPS",
     description:
       "Learn more about ZEON's product philosophy, engineering principles, and enterprise foundation by XEOPS.",
-    images: ["/hero_final.png"],
+    images: ["/og-image.jpg"],
   },
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://zeon.xeops.in",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "About",
-      item: "https://zeon.xeops.in/about",
-    },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 
 export default function AboutPage() {
   return (
@@ -199,11 +186,11 @@ export default function AboutPage() {
               {/* Action Area */}
               <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/60 relative z-20">
                 <a
-                  href="tel:9447141984"
+                  href="tel:+919447141984"
                   className="group flex w-full items-center justify-center gap-2.5 rounded-full bg-[#141414] px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-[#262626] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98] touch-manipulation"
                 >
                   <Phone className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-                  <span>Call Directly: 9447141984</span>
+                  <span>Call Directly: +91 94471 41984</span>
                 </a>
               </div>
             </InteractiveCard>
@@ -221,7 +208,7 @@ export default function AboutPage() {
                     <Globe className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-[#141414]">Explore ZEON Products</h3>
+                    <h2 className="text-base font-bold text-[#141414]">Explore ZEON Products</h2>
                     <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-[#737373]">
                       Available for Windows desktop dispatch and Android mobile APK order taking.
                     </p>
@@ -242,9 +229,9 @@ export default function AboutPage() {
 
           {/* Core Principles Cards */}
           <div className="mt-10 sm:mt-14 max-w-5xl mx-auto">
-            <h3 className="text-lg sm:text-xl font-bold text-[#141414] text-center mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl font-bold text-[#141414] text-center mb-6 sm:mb-8">
               Our Core Principles
-            </h3>
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               <InteractiveCard
@@ -255,7 +242,7 @@ export default function AboutPage() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#141414] text-white text-xs font-bold mb-3 sm:mb-4">
                     1
                   </div>
-                  <h4 className="font-semibold text-sm sm:text-base text-[#141414]">Simplicity First</h4>
+                  <h3 className="font-semibold text-sm sm:text-base text-[#141414]">Simplicity First</h3>
                   <p className="mt-1.5 text-xs text-[#5A5A5A] leading-relaxed">
                     We craft clean, thoughtful interfaces that eliminate noise, letting you focus entirely on your work.
                   </p>
@@ -270,7 +257,7 @@ export default function AboutPage() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#141414] text-white text-xs font-bold mb-3 sm:mb-4">
                     2
                   </div>
-                  <h4 className="font-semibold text-sm sm:text-base text-[#141414]">Engineered for Speed</h4>
+                  <h3 className="font-semibold text-sm sm:text-base text-[#141414]">Engineered for Speed</h3>
                   <p className="mt-1.5 text-xs text-[#5A5A5A] leading-relaxed">
                     Fast interactions, instant cloud synchronization, and responsive feedback across desktop and mobile.
                   </p>
@@ -285,7 +272,7 @@ export default function AboutPage() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#141414] text-white text-xs font-bold mb-3 sm:mb-4">
                     3
                   </div>
-                  <h4 className="font-semibold text-sm sm:text-base text-[#141414]">Built on Trust</h4>
+                  <h3 className="font-semibold text-sm sm:text-base text-[#141414]">Built on Trust</h3>
                   <p className="mt-1.5 text-xs text-[#5A5A5A] leading-relaxed">
                     Rigorous security standards, data privacy, and reliable architecture designed for long-term growth.
                   </p>
